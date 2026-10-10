@@ -11,7 +11,6 @@ import net.minecraft.world.gen.feature.IFeatureConfig;
 import net.minecraft.world.gen.feature.OreFeatureConfig;
 import net.minecraft.world.gen.feature.ReplaceBlockConfig;
 import net.minecraft.world.gen.placement.ConfiguredPlacement;
-import net.minecraft.world.gen.placement.CountRangeConfig;
 import net.minecraft.world.gen.placement.DepthAverageConfig;
 import net.minecraft.world.gen.placement.IPlacementConfig;
 import net.minecraft.world.gen.placement.Placement;
@@ -150,24 +149,6 @@ public final class OreStretcher {
                     rangeMultiplier *= (double) (v[2] - v[1] + add) / Math.max(1, v[2] - v[1]);
                 } else {
                     newConf = new TopSolidRangeConfig(v[0] + add, v[1], v[2]);
-                }
-                out.set(i, new ConfiguredPlacement(placement, newConf));
-                changed = true;
-            } else if (conf instanceof CountRangeConfig) {
-                int[] v = ints(conf); // count, bottomOffset, topOffset, maximum
-                int upper = v[1] + v[3] - v[2];
-                if (upper >= WORLD_TOP) {
-                    continue;
-                }
-                int add = Math.min(shift, WORLD_TOP - upper);
-                IPlacementConfig newConf;
-                if (stretch) {
-                    double mult = Config.SCALE_COUNTS.get()
-                            ? Math.min(MAX_MULTIPLIER, (double) (v[3] - v[2] + add) / Math.max(1, v[3] - v[2]))
-                            : 1.0;
-                    newConf = new CountRangeConfig(Math.max(1, (int) Math.round(v[0] * mult)), v[1], v[2], v[3] + add);
-                } else {
-                    newConf = new CountRangeConfig(v[0], v[1] + add, v[2], v[3]);
                 }
                 out.set(i, new ConfiguredPlacement(placement, newConf));
                 changed = true;

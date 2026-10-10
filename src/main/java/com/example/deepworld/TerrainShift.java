@@ -1,7 +1,7 @@
 package com.example.deepworld;
 
 import net.minecraft.util.registry.WorldGenRegistries;
-import net.minecraft.world.gen.settings.DimensionSettings;
+import net.minecraft.world.gen.DimensionSettings;
 import net.minecraft.world.gen.settings.NoiseSettings;
 
 import java.lang.reflect.Field;
@@ -31,7 +31,7 @@ public final class TerrainShift {
 
     public static void apply() {
         try {
-            DimensionSettings settings = WorldGenRegistries.NOISE_GENERATOR_SETTINGS.get(DimensionSettings.OVERWORLD);
+            DimensionSettings settings = WorldGenRegistries.NOISE_GENERATOR_SETTINGS.getValueForKey(DimensionSettings.OVERWORLD);
             if (settings == null) {
                 DeepWorldMod.LOGGER.error("Overworld noise settings not found, terrain NOT shifted by code (data pack JSON may still apply).");
                 return;
