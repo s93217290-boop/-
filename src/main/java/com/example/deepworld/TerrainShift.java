@@ -31,7 +31,7 @@ public final class TerrainShift {
 
     public static void apply() {
         try {
-            DimensionSettings settings = WorldGenRegistries.NOISE_GENERATOR_SETTINGS.getValueForKey(DimensionSettings.OVERWORLD);
+           DimensionSettings settings = WorldGenRegistries.NOISE_SETTINGS.getOrDefault(DimensionSettings.OVERWORLD.getLocation());
             if (settings == null) {
                 DeepWorldMod.LOGGER.error("Overworld noise settings not found, terrain NOT shifted by code (data pack JSON may still apply).");
                 return;
