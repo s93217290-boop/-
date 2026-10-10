@@ -1,0 +1,27 @@
+modLoader="javafml"
+loaderVersion="[36,)"
+license="MIT"
+
+[[mods]]
+modId="deepworld"
+version="1.0.0"
+displayName="Deep World +64"
+authors="you"
+description='''
+Raises the overworld terrain by 64 blocks, lifts the clouds with it and stretches
+ore generation (vanilla and modded) into the new space below the surface.
+'''
+
+[[dependencies.deepworld]]
+    modId="forge"
+    mandatory=true
+    versionRange="[36,)"
+    ordering="NONE"
+    side="BOTH"
+
+[[dependencies.deepworld]]
+    modId="minecraft"
+    mandatory=true
+    versionRange="[1.16.5]"
+    ordering="NONE"
+    side="BOTH"
